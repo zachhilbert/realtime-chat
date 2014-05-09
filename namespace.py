@@ -28,12 +28,13 @@ class SocketNS(BaseNamespace, BroadcastMixin):
     def on_message(self, message):
         self.log('got message {0} from >{1}<'.format(message, self.session['username']))
         # create and persist message
-        message_obj = Message(message, self.session['username'])
+        clean_message = escape(message[:2000] if len(message) > 2000 else message)
+        message_obj = Message(clean_message, self.session['username'])
         db.session.add(message_obj)
         db.session.commit()
 
         self.broadcast_event_not_me('message', {
             'sender': self.session['username'],
-            'text': message})
+            'text': clean_message})
         return True, message
 
