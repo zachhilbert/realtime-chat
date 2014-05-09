@@ -44,7 +44,11 @@ $(function() {
         var html = template({status: status, user: message.sender, text: message.text});
         $messages.append(html);
     };
-
+    
+    /*
+     * Can use this to pull message list
+     * (Not used yet)
+     */
     var getMessages = function() {
         $.ajax({
         	url: '/get_messages',
@@ -67,7 +71,7 @@ $(function() {
             chat.join($(this).find('[name="username"]').val(),
                 function(joined, nick) {
                     if ( joined ) {
-                        displayAlert('You have joined Coupon Chat!', 'success');//, getMessages);
+                        displayAlert('You have joined Coupon Chat!', 'success');
                         $(self).hide();
                         $('#chatRoom').show();
                     }

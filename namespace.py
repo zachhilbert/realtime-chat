@@ -11,12 +11,6 @@ class SocketNS(BaseNamespace, BroadcastMixin):
 
     def log(self, message):
         self.logger.info('[{0}] {1}'.format(self.socket.sessid, message))
-
-    def recv_connect(self):
-        self.log('New connection')
-
-    def recv_disconnect(self):
-        self.log('Disconnected')
     
     def on_join(self, name):
         # clean and truncate name
