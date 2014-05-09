@@ -113,3 +113,10 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+.message-alert {
+    z-index: 1000;
+    position: absolute;
+    width: 25%;
+    left: 40%;
+    top: 1%;
+}

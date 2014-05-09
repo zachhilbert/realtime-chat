@@ -1,19 +1,24 @@
 {% extends 'base.html' %}
 {% block body %}
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      {% for message in messages %}
-        <p class="bg-danger">{{ message }}</p>
-      {% endfor %}
-    {% endif %}
-  {% endwith %} 
-      <form class="form-signin" role="form" method="POST">
-        <h2 class="form-signin-heading">Please sign in</h2>
+  <div class="message-alert alert"></div>
+  <form class="form-signin" role="form" method="POST">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <div class="form-group">
+      <input name="username" type="text" class="form-control" placeholder="your_nick" required autofocus>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </div>
+  </form>
+  <div id="chatRoom" style="display: none;">
+    <div class="jumbotron">
+      <div id="messages"></div>
+      <h2>Enter your message</h2>
+      <form class="message-form form-horizontal" role="form">
         <div class="form-group">
-          <input name="username" type="text" class="form-control" placeholder="your_nick" required autofocus>
-        </div>
-        <div class="form-group">
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+          <textarea name="message-text" class="form-control" rows="3" required placeholder="type your message..."></textarea>
         </div>
       </form>
+    </div>
+  </div>
 {% endblock %}
