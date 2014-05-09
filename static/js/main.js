@@ -1,4 +1,8 @@
 $(function() {
+    var socket = io.connect('/chat');
+    socket.on('connect', function() {
+        alert('connected to chat server');
+    });
     var $messages = $('#messages');
     var tplStatus = '{{status}}';
     var tplUser = '{{user}}';
